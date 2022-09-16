@@ -1,0 +1,62 @@
+<div class="section">
+    <h1 class="border-top-color">Room Reservation</h1>
+    <form [formGroup]="reservationFrom" class="FormClass">
+            <mat-form-field class="fieldcss">
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple formControlName="selectorControl" (selectionChange)="selectedRoom()">
+                    <mat-option *ngFor="let i of seletedRoom" [value]="i.value">{{i.displayName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="fieldcss">
+                <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="From Date" formControlName="minDateControl">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker ></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="fieldcss">
+                <input matInput [matDatepicker]="picker1" [min]="minDate2" placeholder="To Date" formControlName="minDate2Control">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1 ></mat-datepicker>
+            </mat-form-field>
+    </form>
+    <button mat-flat-button color="primary" class="display-button" [disabled]="!reservationFrom.valid"
+                    (click)="displayRooms()">Display Rooms</button>
+</div>
+<br>
+
+<div  *ngIf="displaySelectedRoom">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+        <!-- Room Type Column -->
+        <ng-container matColumnDef="roomType">
+        <th mat-header-cell *matHeaderCellDef>Room Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.roomType}} </td>
+        </ng-container>
+
+        <!-- Room ID Column -->
+        <ng-container matColumnDef="roomId">
+            <th mat-header-cell *matHeaderCellDef>Room ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.roomId}} </td>
+        </ng-container>
+        
+    
+        <!-- From Date Column -->
+        <ng-container matColumnDef="fromDate">
+        <th mat-header-cell *matHeaderCellDef> From Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.fromDate}} </td>
+        </ng-container>
+    
+        <!-- ToDate Column -->
+        <ng-container matColumnDef="toDate">
+        <th mat-header-cell *matHeaderCellDef> To Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.toDate}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

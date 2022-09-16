@@ -1,0 +1,21 @@
+
+ /* .section{
+   width: 750px;
+    border: 2px solid green;
+    padding: 20px; 
+    margin: auto; 
+}  */
+ .section .display-button{
+    position:relative;
+    margin-left: 90%;
+ }
+.section .h1{
+    text-align: center;
+    margin-right: 50%;
+ }
+.fieldcss{
+  margin-right: 50px;
+}
+table {
+  width: 100%;
+}

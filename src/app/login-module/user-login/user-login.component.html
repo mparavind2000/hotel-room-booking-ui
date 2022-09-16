@@ -1,0 +1,40 @@
+<section class="main-wrapper-section">
+    <div class="container">
+        <div class="wrapper-box left-container">
+            <h1>Welcome Back!</h1>
+            <p>To keep connected with us please login with your personal info</p>
+
+            <p>Doesn't have an account </p>
+            <button mat-flat-button color="primary" (click)="routerNavigate('register')">Register</button>
+        </div>
+        <div class="wrapper-box right-container">
+            <h1>User Login</h1>
+            <p>some demo text hello world</p>
+            <div class="form">
+                <form [formGroup]="loginForm">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Gmail</mat-label>
+                        <input type="text" matInput placeholder="Placeholder" formControlName="EmailAddress">
+                        <mat-icon matSuffix>mail</mat-icon>
+                        <mat-error *ngIf="loginForm.controls.EmailAddress.hasError('required')">Gmail  is required
+                        </mat-error>
+                        <mat-error *ngIf="loginForm.controls.EmailAddress.hasError('email')"> Gmail should contain '@' and should not contain space' ' symbols 
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input [type]="showPassword ? 'text' : 'password' " matInput placeholder="Placeholder"
+                            formControlName="password">
+                        <mat-icon matSuffix style="cursor: pointer;" (click)="passwordVisibility()">{{showPassword ?
+                            'visibility':'visibility_off'}}</mat-icon>
+                        <mat-error *ngIf="loginForm.controls.password.hasError('required')">Password is required
+                        </mat-error>
+                        <mat-error *ngIf="loginForm.controls.password.hasError('pattern')">Invalid Password</mat-error>
+                    </mat-form-field>
+                </form>
+            </div>
+            <button mat-flat-button color="primary" class="login-button" [disabled]="!loginForm.valid" (click)="userLogin()">Login</button>
+        </div>
+    </div>
+</section>
