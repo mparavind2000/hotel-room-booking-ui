@@ -9,13 +9,13 @@
             </mat-form-field>
 
             <mat-form-field class="fieldcss">
-                <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="From Date" formControlName="minDateControl">
+                <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="Start Date" formControlName="minDateControl">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker ></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="fieldcss">
-                <input matInput [matDatepicker]="picker1" [min]="minDate2" placeholder="To Date" formControlName="minDate2Control">
+                <input matInput [matDatepicker]="picker1" [min]="minDate2" placeholder="End Date" formControlName="minDate2Control">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1 ></mat-datepicker>
             </mat-form-field>
@@ -24,8 +24,8 @@
                     (click)="displayRooms()">Display Rooms</button>
 </div>
 <br>
-
-<div  *ngIf="displaySelectedRoom">
+<div *ngIf="DateErrorMessage" class="errorMessageDate"> End Date should be greater than Start date</div>
+<div  *ngIf="displaySelectedRoom && !DateErrorMessage">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.

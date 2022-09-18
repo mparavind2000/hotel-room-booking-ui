@@ -7,7 +7,7 @@
 }  */
  .section .display-button{
     position:relative;
-    margin-left: 90%;
+    margin-left: 85%;
  }
 .section .h1{
     text-align: center;
@@ -18,4 +18,14 @@
 }
 table {
   width: 100%;
+}
+.FormClass{
+  margin-left: 2%;
+}
+.border-top-color{
+  margin: 2%;
+}
+.errorMessageDate{
+  text-align: center;
+  color: red;
 }

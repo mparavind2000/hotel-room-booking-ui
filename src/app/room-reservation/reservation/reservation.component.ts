@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { dateValidation } from '../dateValidation'
 
 @Component({
   selector: 'app-reservation',
@@ -9,10 +8,10 @@ import { dateValidation } from '../dateValidation'
 })
 export class ReservationComponent implements OnInit {
   reservationFrom: FormGroup;
+  DateErrorMessage:boolean= false;
   minDate = new Date(); // to get current date
   secondDate=false;
   minDate2 = new Date();
- 
   displaySelectedRoom:boolean = false;
   displayedColumns: string[] = ['roomType', 'roomId', 'fromDate', 'toDate'];
   dataSource = [
@@ -26,13 +25,10 @@ export class ReservationComponent implements OnInit {
   constructor(private fb: FormBuilder) { 
     this.reservationFrom=this.fb.group({
       selectorControl:['', [Validators.required]],
+      date:['123'],
       minDateControl:['',[Validators.required]],
-      minDate2Control:['',[Validators.required,dateValidation]]
+      minDate2Control:['',[Validators.required]]
     })
-    this.reservationFrom.controls.minDateControl.valueChanges
-    .subscribe(
-      x => this.reservationFrom.controls.minDate2Control.updateValueAndValidity()
-    )
   }
 
   ngOnInit(): void {
@@ -40,16 +36,16 @@ export class ReservationComponent implements OnInit {
   }
 
   displayRooms(){
-    console.log(this.reservationFrom.value);
     this.displaySelectedRoom=true;
-
+    this.reservationFrom.value.minDateControl > this.reservationFrom.value.minDate2Control ? this.DateErrorMessage=true : this.DateErrorMessage=false;
+    //this.dataSource.push(this.reservationFrom.value);
+    console.log(this.dataSource);
   }
   bookedRooms(){
-    console.log("...")
+  
   }
   selectedRoom(){
-    const propertyNames = Object.keys(this.reservationFrom.value);
-    console.log(propertyNames);
+  
   }
 
 }
