@@ -1,0 +1,23 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .formcclass{
+    margin-left: 2%;
+  }
+  .fieldcss{
+    margin-right: 50px;
+  }
+  .section .display-button{
+    position:relative;
+    margin-left: 2%;
+ }
+ .successmessage{
+    color: green;
+    text-align: center;
+ }

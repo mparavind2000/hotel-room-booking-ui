@@ -37,4 +37,5 @@
             <button mat-flat-button color="primary" class="login-button" [disabled]="!loginForm.valid" (click)="userLogin()">Login</button>
         </div>
     </div>
+    <h1 class="errormsgclass" *ngIf="msgStatus">{{msg}}</h1>
 </section>

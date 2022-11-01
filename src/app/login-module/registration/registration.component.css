@@ -49,3 +49,9 @@
     margin: 3%;
     font-size: 15px;
 }
+.errormessage{
+    color: red;
+}
+.successmessage{
+    color: green;
+}

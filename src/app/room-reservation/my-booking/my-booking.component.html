@@ -6,35 +6,50 @@
             The actual rendered columns are set as a property on the row definition" -->
     
         <!-- Room Type Column -->
-        <ng-container matColumnDef="roomType">
-        <th mat-header-cell *matHeaderCellDef>Room Type </th>
-        <td mat-cell *matCellDef="let element"> {{element.roomType}} </td>
+        <ng-container matColumnDef="reservationId">
+        <th mat-header-cell *matHeaderCellDef>Reservation ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.reservationId}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="customerId">
+            <th mat-header-cell *matHeaderCellDef>Customer ID</th>
+            <td mat-cell *matCellDef="let element"> {{element.customerId}} </td>
+            </ng-container>
 
         <!-- Room ID Column -->
         <ng-container matColumnDef="roomId">
-            <th mat-header-cell *matHeaderCellDef>Room ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.roomId}} </td>
+            <th mat-header-cell *matHeaderCellDef>room ID</th>
+            <td mat-cell *matCellDef="let element"> {{element.room.roomId}} </td>
         </ng-container>
         
     
         <!-- From Date Column -->
-        <ng-container matColumnDef="fromDate">
-        <th mat-header-cell *matHeaderCellDef> From Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.fromDate}} </td>
+        <ng-container matColumnDef="roomNbr">
+        <th mat-header-cell *matHeaderCellDef>Room Number</th>
+        <td mat-cell *matCellDef="let element"> {{element.room.roomNbr}} </td>
         </ng-container>
     
         <!-- ToDate Column -->
-        <ng-container matColumnDef="toDate">
-        <th mat-header-cell *matHeaderCellDef> To Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.toDate}} </td>
+        <ng-container matColumnDef="roomType">
+        <th mat-header-cell *matHeaderCellDef>Room Type</th>
+        <td mat-cell *matCellDef="let element"> {{element.room.roomType}} </td>
         </ng-container>
     
 
-        <ng-container matColumnDef="delete">
+        <ng-container matColumnDef="isBooked">
             <th mat-header-cell *matHeaderCellDef> Delete </th>
-            <td mat-cell *matCellDef="let element"> <button (click)="deleteUser(element)" mat-button color="primary">Delete</button> </td>
+            <td mat-cell *matCellDef="let element"> <button (click)="deleteUser(element)" mat-button color="primary" [disabled]="element.room.isBooked">Delete<p *ngIf="element.room"><span *ngIf="element.room.isBooked">{{roomBookedmessage}}</span></p></button> </td>
           </ng-container>
+
+          <ng-container matColumnDef="fromDate">
+            <th mat-header-cell *matHeaderCellDef>From Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.fromDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="toDate">
+                <th mat-header-cell *matHeaderCellDef>To Date</th>
+                <td mat-cell *matCellDef="let element"> {{element.toDate}} </td>
+                </ng-container>
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

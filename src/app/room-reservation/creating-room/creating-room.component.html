@@ -1,0 +1,17 @@
+<form [formGroup]="createroomForm" class="formcclass">
+    <mat-form-field class="fieldcss">
+        <mat-label>Select an option</mat-label>
+        <mat-select disableRipple formControlName="selectorControl" (selectionChange)="selectedRoom()">
+            <mat-option *ngFor="let i of seletedRoom" [value]="i.value">{{i.displayName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="fieldcss">
+        <mat-label>Room Number</mat-label>
+        <input type="text" matInput placeholder="Placeholder" formControlName="roomNbr">
+        <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="display-button" [disabled]="!createroomForm.valid"
+                    (click)="createroom()">Create Room</button>
+</form>
+<h1 *ngIf="messageStaatus" class="successmessage">{{sucessmessage}}</h1>

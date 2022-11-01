@@ -19,14 +19,15 @@ import { CommonNavBarComponent } from './common-nav-bar/common-nav-bar.component
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonLandingComponent } from './common-landing/common-landing.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { CreatingRoomComponent } from './creating-room/creating-room.component';
 
 const routes: Routes = [
   
   { path: 'dashboard', component: CommonLandingComponent ,children:[
     {path:'mybooking', component:MyBookingComponent},
-    { path: 'reservation', component: ReservationComponent }
+    { path: 'reservation', component: ReservationComponent },
+    { path: 'createroom', component:CreatingRoomComponent}
   ]},
-  
 ]
 
 @NgModule({
@@ -34,7 +35,8 @@ const routes: Routes = [
     ReservationComponent,
     MyBookingComponent,
     CommonNavBarComponent,
-    CommonLandingComponent
+    CommonLandingComponent,
+    CreatingRoomComponent
   ],
   imports: [
     CommonModule,

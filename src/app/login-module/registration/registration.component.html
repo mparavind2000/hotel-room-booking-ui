@@ -74,4 +74,6 @@
         <p>Already have an account? <a (click)="routerNavigate('login')" style="cursor: pointer;">Click here to
                 Login</a></p>
     </div>
+    <h1 class="errormessage" *ngIf="errorStatus">{{msg}}</h1>
+    <h1 class="successmessage" *ngIf="sucessStatus">{{msg}}</h1>
 </section>
