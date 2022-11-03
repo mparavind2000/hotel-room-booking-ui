@@ -25,7 +25,9 @@ export class BackendApiService {
         })
     }
     searchingrooms(searchingroomdetails:any){
-        return this.httpclient.get(`${this.URL2}/rooms/search`,searchingroomdetails)
+        return this.httpclient.post(`${this.URL2}/rooms/search`,searchingroomdetails,{
+            headers: this.token
+        })
     }
     reservingroom(detailsOfRoomBooked:any){
         return this.httpclient.post(`${this.URL2}/reservation`,detailsOfRoomBooked,{
