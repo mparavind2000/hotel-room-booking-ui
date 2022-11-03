@@ -9,45 +9,45 @@ export class BackendApiService {
     token=  new HttpHeaders().append('accessToken',sessionStorage.getItem('accessToken') || '')
     constructor(private httpclient: HttpClient) { }
     registerUser(registerform: any) {
-       return this.httpclient.post(`${this.URL}/register/${this.token}`,registerform,{
+       return this.httpclient.post(`${this.URL}/register`,registerform,{
             observe: 'body'
         })
     }
     loginUser(loginDetails: any){
-        return this.httpclient.post(`${this.URL}/login/${this.token}`,loginDetails,{
+        return this.httpclient.post(`${this.URL}/login`,loginDetails,{
             observe : 'body',
             
         })
     }
     createrooms(createdroom:any){
-        return this.httpclient.post(`${this.URL2}/room/${this.token}`,createdroom,{
+        return this.httpclient.post(`${this.URL2}/room`,createdroom,{
             headers: this.token
         })
     }
     searchingrooms(searchingroomdetails:any){
-        return this.httpclient.post(`${this.URL2}/rooms/search/${this.token}`,searchingroomdetails,{
+        return this.httpclient.post(`${this.URL2}/rooms/search`,searchingroomdetails,{
             headers: this.token
         })
     }
     reservingroom(detailsOfRoomBooked:any){
-        return this.httpclient.post(`${this.URL2}/reservation/${this.token}`,detailsOfRoomBooked,{
+        return this.httpclient.post(`${this.URL2}/reservation`,detailsOfRoomBooked,{
             headers: this.token
         })
     }
     reservations(){
-        return this.httpclient.get(`${this.URL2}/reservations/${this.token}`,{
+        return this.httpclient.get(`${this.URL2}/reservations`,{
             headers: this.token,
             observe: 'body'
         })
     }
     deleteroom(reservationId:string){
-        return this.httpclient.get(`${this.URL2}/reservation/${reservationId}/${this.token}`,{
+        return this.httpclient.get(`${this.URL2}/reservation/${reservationId}`,{
             headers: this.token,
             observe: 'body'
         })
     }
     logout(){
-        return this.httpclient.post(`${this.URL}/logout/${this.token}`,{
+        return this.httpclient.post(`${this.URL}/logout`,{
             observe: 'body',
             headers: this.token
         })
