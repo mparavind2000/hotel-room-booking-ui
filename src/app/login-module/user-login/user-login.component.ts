@@ -24,12 +24,13 @@ export class UserLoginComponent implements OnInit {
   userLogin(){
     console.log(this.loginForm.value);
     let backendLoginForm= {
-      "email":this.loginForm.value.email, "password":this.loginForm.value.password
+      "email":this.loginForm.value.EmailAddress, "password":this.loginForm.value.password
     }
     this.backendApi.loginUser(backendLoginForm).subscribe(
       (data:any) =>{
         if(data.accessToken){
-          sessionStorage.setItem('accessToken',data['accessToken'])
+          sessionStorage.setItem('accessToken',data['accessToken']);
+          sessionStorage.setItem('customerId',data['customerId']);
           this.routerNavigate("user/dashboard/mybooking");
         }
         else if (data.msg){
@@ -52,7 +53,7 @@ export class UserLoginComponent implements OnInit {
           console.error(error.msg)
         }
         else{
-          this.msg="some thing went wrong please connect with team";
+          this.msg=error.error.msg;
         }
       }
     )
