@@ -17,6 +17,7 @@ export class CommonNavBarComponent implements OnInit {
     this.router.navigate([`/${url}`])
   }
   logOut(){
+    this.routerNavigate("login");
     this.backend.logout().subscribe(
       (data:any) =>{
         if(data.message){

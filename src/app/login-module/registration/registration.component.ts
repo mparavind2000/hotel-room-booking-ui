@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
   registrationUser(){
     console.log(this.registrationForm.value)
     let backendRegistration = { "email": this.registrationForm.value.EmailAddress, "password":this.registrationForm.value.password,
-     "phoneNumbe":this.registrationForm.value.phoneNumbe, "address":this.registrationForm.value.address, "firstName":this.registrationForm.value.firstName,
+     "phoneNumber":this.registrationForm.value.phoneNumber, "address":this.registrationForm.value.address, "firstName":this.registrationForm.value.firstName,
     "lastName":this.registrationForm.value.lastName }
     this.backEndApiService.registerUser(backendRegistration).subscribe(
       (data:any) =>{
